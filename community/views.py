@@ -1,14 +1,25 @@
 from django.shortcuts import render
 # 사용자의 입력 가능란을 만든다.
 from community.forms import Form
+from .models import Article
+from .forms import Form
 # 커뮤니티 밑에 폼즈에서 폼을 가져온다.
 # Create your views here.
+def articleList(request):
+    # article 클래스와 연결된 테이블의 모든 데이터(레코드)를 조회해서 변수에 대입
+    article_list= Article.objects.all()
+    print(article_list)
+    for a in article_list:
+     #   print("이름",a.name, "제목: ", a.title)
+        return render(request, 'list.html', {'article_list': article_list})
+    # return render
+
 def write(request): # request는 네트워크 통신으로 전달받은 것, 즉 인터넷에 https를 적은 그 자체
     # 비즈니스 로직 구현 ex) db와 통신
     
     form = Form() # 메모리로 저장하기 위해 폼을 가져오고 객체변수에 담는다.
 
-    hello = "안녕" # -> html에 넘겨주어야 한다.
+    hello = "형식에 맞게 작성해주세요." # -> html에 넘겨주어야 한다.
     # 사용자 method가 post일 경우
     if request.method == 'POST':
         # request 데이터를 폼객체로 생성
