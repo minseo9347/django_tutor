@@ -21,5 +21,5 @@ from community.views import write
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('write/', write, name='write'), # path
-# view의 함수
+# view의 함수 # write/ 패스가 오면 write 함수를 실행하라.
 ]

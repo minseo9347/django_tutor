@@ -5,6 +5,14 @@
     <title>Document</title>
 </head>
 <body>
-    <p>헬로 장고</p>
+    <h1>헬로 장고</h1>
+    <P>{{ hello_django }}</P>
+    <form action=""method = "post">
+        <table>
+            {{ form }} {% csrf_token %}
+        </table>
+        <button type = "submit" >확인</button>
+    </form>
+
 </body>
 </html>
