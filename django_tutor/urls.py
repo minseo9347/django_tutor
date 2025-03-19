@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from community.views import articleList, write, viewDetail
+from community.views import articleList, write, viewDetail, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,9 @@ urlpatterns = [
     path('list/', articleList, name = 'list'),
     # http://127.0.0.1:8000/view_detail/1
     path('view_detail/<int:num>/', viewDetail, name = 'view_detail'),
+    # http://127.0.0.1:8000/
+    path('', index, name = 'index'),
+ 
     # 유지보수측면에서 name 변수로 지정하면 URL 경로가 변경되더라도 name만 일관되면 템플릿이나 뷰 코드를 수정할 필요가 없다.
 # view의 함수 # write/ 패스가 오면 write 함수를 실행하라.
 ]
