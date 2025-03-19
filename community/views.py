@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 # 사용자의 입력 가능란을 만든다.
-from community.forms import Form
+from community.forms import Form 
+# .은 현재를 의미한다 models랑 views는 한 폴더 안에 있음
+# 커뮤니티 안에 폼스 
 from .models import Article
 from .forms import Form
 # 커뮤니티 밑에 폼즈에서 폼을 가져온다.
@@ -11,7 +13,7 @@ def articleList(request):
     print(article_list)
     for a in article_list:
      #   print("이름",a.name, "제목: ", a.title)
-        return render(request, 'list.html', {'article_list': article_list})
+        return render(request, 'list.html', {'article_list': article_list}) # list.html에 데이터 전달
     # return render
 
 def write(request): # request는 네트워크 통신으로 전달받은 것, 즉 인터넷에 https를 적은 그 자체
@@ -36,3 +38,11 @@ def write(request): # request는 네트워크 통신으로 전달받은 것, 즉
     # hello를 html에 넣어라 # html은 브라우저에서 해석되기 때문에 파이썬을 직접해석할 수 없고 연결시키기 위해 딕셔너리로 넣어야 한다.
     # 그러므로 파이썬 내용을 키값에 대입하여 html 문서에 작성한다. -> community에 templates 문서이름인 write.html에 키값을 넣는다.
     return render(request, 'write.html', {'hello_django':hello,'form':form})
+
+
+def viewDetail(request, num=2):
+    article_detail = Article.objects.get(id=num)
+    # article_detail = get_object_or_404(Article, id=num)
+    print(article_detail)
+    return render(request, 'view_detail.html', {'article_detail':article_detail})
+
