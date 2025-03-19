@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 # 사용자의 입력 가능란을 만든다.
 from community.forms import Form 
 # .은 현재를 의미한다 models랑 views는 한 폴더 안에 있음
@@ -9,7 +10,7 @@ from .forms import Form
 # Create your views here.
 def articleList(request):
     # article 클래스와 연결된 테이블의 모든 데이터(레코드)를 조회해서 변수에 대입
-    article_list= Article.objects.all()
+    article_list= Article.objects.all().order_by('-title')
     print(article_list)
     for a in article_list:
      #   print("이름",a.name, "제목: ", a.title)
@@ -30,7 +31,8 @@ def write(request): # request는 네트워크 통신으로 전달받은 것, 즉
         if form.is_valid(): # 데이터 유효성 검증
             # DB데이블에 저장
             form.save()
-
+            return redirect(reverse('community:list')) # 앱이름, html 이름 -> 목록을 작성하면 list가 실행되어 이동
+ 
     else:
         form = Form
     # return render(request, 'write.html', {'키':파이썬변수}) # request,

@@ -8,7 +8,8 @@
 <body>
     <h1> <최근 글 목록></h1>
     {% for article in latest_article_list %} 
-        <li> {{ article.title }} | {{ article.name }} 
+    <!--  <a href="/view_detail/{{ article.id }}">{{ article.title }}</a>  = title을 누르면 해당 id 인덱스의 정보로 이동-->
+        <li> <a href="/view_detail/{{ article.id }}">{{ article.title }}</a>  | {{ article.name }} 
         | {{article.cdate|date:"Y년 M d 일 D"}} </li>
     {% endfor %}
     </ul>

@@ -17,6 +17,7 @@ Including another URLconf
 from django.urls import path
 from community.views import articleList, write, viewDetail
 
+app_name = "community" # community : list
 urlpatterns = [
     # 커뮤니티와 관련된 경로
     path('write/', write, name='write'),
