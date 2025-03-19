@@ -46,8 +46,3 @@ def viewDetail(request, num=2):
     print(article_detail)
     return render(request, 'view_detail.html', {'article_detail':article_detail})
 
-def index(request):
-    # article 테이블에서 최근글 3개를 쿼리(조회)한다. #order_by는 정렬
-    latest_article_list = Article.objects.all().order_by('-cdate')[:3]
-    print(latest_article_list)
-    return render(request, 'index.html', {'latest_article_list': latest_article_list})
