@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-    <h1> 정보를 입력해주세요. </h1>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>글 쓰기</title>
+{% endblock title %}
+{% block content %}
+    <h1> 오늘의 운동 일지를 기록해주세요! </h1>
     <P>{{ hello_django }}</P>
     <form action=""method = "post">
         <table>
-            {{ form }} {% csrf_token %}
+            <!-- form을 crispy로 보낸다. -->
+            {{ form|crispy }} {% csrf_token %}
         </table>
-        <button type = "submit" >확인</button>
+        <button type = "submit" class="btn btn-primary" >확인</button>
     </form>
-
-</body>
-</html>
+{% endblock content %}

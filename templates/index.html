@@ -1,17 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> <최근 글 목록></h1>
-    {% for article in latest_article_list %} 
-    <!--  <a href="/view_detail/{{ article.id }}">{{ article.title }}</a>  = title을 누르면 해당 id 인덱스의 정보로 이동-->
-        <li> <a href="/view_detail/{{ article.id }}">{{ article.title }}</a>  | {{ article.name }} 
-        | {{article.cdate|date:"Y년 M d 일 D"}} </li>
-    {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "Base.html" %}
+
+{% block content %}       
+        <h1>고통은 고스란히 선이 되어 남는다.</h1>
+        <div class="row">
+            <div class="col">
+            <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for article in latest_article_list %} 
+                      <tr>
+                        <td><a href="/view_detail/{{ article.id }}">{{ article.title }}</a></td>
+                        <td>{{ article.name }} </td>
+                        <td>{{article.cdate|date:"Y년 M d 일 D"}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+            </div>
+            <div class="col">
+            2 of 2
+            </div>
+        </div>
+
+        </ul>
+{% endblock content %}

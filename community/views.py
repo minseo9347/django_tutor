@@ -10,7 +10,7 @@ from .forms import Form
 # Create your views here.
 def articleList(request):
     # article 클래스와 연결된 테이블의 모든 데이터(레코드)를 조회해서 변수에 대입
-    article_list= Article.objects.all().order_by('-title')
+    article_list= Article.objects.all().order_by('-cdate')
     print(article_list)
     for a in article_list:
      #   print("이름",a.name, "제목: ", a.title)
@@ -22,7 +22,7 @@ def write(request): # request는 네트워크 통신으로 전달받은 것, 즉
     
     form = Form() # 메모리로 저장하기 위해 폼을 가져오고 객체변수에 담는다.
 
-    hello = "형식에 맞게 작성해주세요." # -> html에 넘겨주어야 한다.
+    hello = "고통은 고스란히 선이 되어 남는다." # -> html에 넘겨주어야 한다.
     # 사용자 method가 post일 경우
     if request.method == 'POST':
         # request 데이터를 폼객체로 생성

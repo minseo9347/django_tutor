@@ -1,19 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>글 목록</h1>
-    <p>제목 | 작성자 | 작성날짜 </p>
-    <ul>
-        {%for article in article_list %}
-        <li> <a href="/view_detail/{{ article.id }}/">{{ article.title }}</a> | {{ article.name }} 
-            | {{ article.cdate|date:"Y년 n월 j일 l" }} </li>
+{% extends "base.html" %}
+{% block title %}
+<title>글 목록</title>
+{% endblock title %}
+{% block content %}
+    <h1>역대 운동 기록</h1>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">날짜</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for article in article_list %} 
+          <tr>
+            <td>{{ article.id }}</a></td>
+            <td><a href="/view_detail/{{ article.id }}">{{ article.title }}</a></td>
+            <td>{{ article.name }} </td>
+            <td>{{ article.cdate }}</td>
+          </tr>
         {% endfor %}
-    </ul>
+        </tbody>
+    </table>
 
-</body>
-</html>
+    <button type="button" class="btn btn-warning"><a href="/write">글쓰기</a></button>
+{% endblock content %}
