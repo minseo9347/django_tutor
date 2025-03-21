@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # http://127.0.0.1:8000/
     path('', index, name = 'index'),
-    path('', include('community.urls')) # 해당 경로에 커뮤니티 앱의 경로를 저장하고 여기에 둔다.
+    path('', include('community.urls')), # 해당 경로에 커뮤니티 앱의 경로를 저장하고 여기에 둔다.
+    path('', include('dashboard.urls')),
     # list, write, view_detail
   
     # 유지보수측면에서 name 변수로 지정하면 URL 경로가 변경되더라도 name만 일관되면 템플릿이나 뷰 코드를 수정할 필요가 없다.

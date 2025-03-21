@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'community',
+    'dashboard',
     "crispy_forms",
     "crispy_bootstrap4",
 ]
@@ -120,6 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-f
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = (BASE_DIR, '', 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
